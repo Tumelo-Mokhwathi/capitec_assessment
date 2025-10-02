@@ -17,7 +17,8 @@ var corsOptions = configuration.GetSection("Cors").Get<CorsOptions>()
 MiddlewareHelper.ConfigureServices<ApplicationDbContext>(
     builder.Services,
     configuration.GetConnectionString("DefaultConnection"),
-    corsOptions);
+    corsOptions,
+    configuration);
 
 var app = builder.Build();
 

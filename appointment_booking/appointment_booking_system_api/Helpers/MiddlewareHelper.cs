@@ -13,7 +13,8 @@ namespace appointment_booking_system.Helpers
         public static void ConfigureServices<TDbContext>(
             IServiceCollection services,
             string? connectionString,
-            CorsOptions corsOptions) where TDbContext : DbContext
+            CorsOptions corsOptions,
+            ConfigurationManager configuration) where TDbContext : DbContext
         {
             services.AddDbContext<TDbContext>(options =>
             {
@@ -39,6 +40,7 @@ namespace appointment_booking_system.Helpers
             });
             services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
             services.AddScoped<IBookingService, BookingService>();
+            services.Configure<EmailSettings>(configuration.GetSection("Email"));
             services.AddScoped<IEmailSenderService, EmailSenderService>();
             services.AddScoped(typeof(GenericController<,>));
             services.AddAuthorization();

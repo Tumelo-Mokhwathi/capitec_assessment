@@ -1,4 +1,6 @@
-﻿using appointment_booking_system.Services.Interfaces;
+﻿using appointment_booking_system.Configurations;
+using appointment_booking_system.Services.Interfaces;
+using Microsoft.Extensions.Options;
 using System.Net;
 using System.Net.Mail;
 
@@ -6,10 +8,17 @@ namespace appointment_booking_system.Services
 {
     public class EmailSenderService : IEmailSenderService
     {
-        private readonly string _smtpHost = "smtp.gmail.com";
-        private readonly int _smtpPort = 587;
-        private readonly string _fromEmail = "GMAIL_ACCOUNT TO SEND EMAIL FROM"; // Replace with your actual Gmail account
-        private readonly string _appPassword = "APP_PASSWORD"; // Replace with your actual app password
+        private readonly string _smtpHost;
+        private readonly int _smtpPort;
+        private readonly string _fromEmail;
+        private readonly string _appPassword;
+        public EmailSenderService(IOptions<EmailSettings> options)
+        {
+            _fromEmail = options.Value.FromEmail;
+            _appPassword = options.Value.AppPassword;
+            _smtpPort = options.Value.SmtpPort;
+            _smtpHost = options.Value.SmtpHost;
+        }
 
         public async Task SendBookingConfirmationAsync(string toEmail, string subject, string body)
         {
