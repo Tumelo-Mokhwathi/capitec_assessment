@@ -1,0 +1,28 @@
+.container {
+    border-radius: 0px;
+}
+
+.input-text {
+    text-align: center;
+}
+
+.align-header {
+    text-align: center;
+}
+
+.button-width {
+    width: 120px;
+    margin-left: 20px;
+}
+
+.emailError {
+    color: red; 
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+.phoneError {
+    color: red; 
+    font-size: 12px;
+    margin-top: -10px;
+}

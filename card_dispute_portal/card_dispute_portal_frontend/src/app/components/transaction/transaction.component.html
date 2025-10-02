@@ -1,0 +1,33 @@
+<div class="transactions-container">
+    <h2>Transactions</h2>
+
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <div *ngIf="!isLoading && transactions.length > 0" class="transactions-list">
+        <mat-card *ngFor="let tx of transactions" class="transaction-card mat-elevation-z2">
+            <div class="transaction-content">
+                <div class="transaction-info">
+                    <h3>{{ tx.merchant }}</h3>
+                    <p>{{ tx.description }}</p>
+                    <mat-chip color="warn" selected>
+                        Status: {{ tx.disputeStatus === 'NotSubmitted' ? 'Not Submitted' : tx.disputeStatus }}
+                    </mat-chip>
+                </div>
+
+                <div class="transaction-action">
+                    <p class="amount">{{ tx.amount | currency:'R':'symbol':'1.2-2' }}</p>
+                    <button [disabled]="tx.disputeStatus !== 'NotSubmitted'" mat-raised-button color="primary"
+                        (click)="createDispute(tx)">
+                        Dispute
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div *ngIf="!isLoading && transactions.length === 0">
+        <p>No transactions found.</p>
+    </div>
+
+    <div *ngIf="error" class="mat-error">{{ error }}</div>
+</div>

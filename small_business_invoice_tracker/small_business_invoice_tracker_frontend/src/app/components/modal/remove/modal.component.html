@@ -1,0 +1,21 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div class="container">
+    <div class="row">
+        <div class="align-header">
+            <h3>Are you sure you want to delete the following invoice?</h3>
+        </div>
+        <div class="content">
+            <p><strong>Invoice ID:</strong> {{ data.id }}</p>
+            <p><strong>Customer:</strong> {{ data.customerName }}</p>
+            <p><strong>Issue Date:</strong> {{ data.issueDate | date }}</p>
+            <p><strong>Due Date:</strong> {{ data.dueDate | date }}</p>
+            <p><strong>Total:</strong> {{ data.total | currency }}</p>
+            <p><strong>Status:</strong> {{ data.status }}</p>
+        </div>
+    </div>
+    <div class="input-text">
+        <button mat-flat-button color="warn" class="button-width" (click)="removeInvoice()">Confirm</button>
+        <button mat-flat-button color="primary" class="button-width" (click)="closeModal()">Cancel</button>
+    </div>
+</div>

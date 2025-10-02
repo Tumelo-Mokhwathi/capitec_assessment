@@ -1,0 +1,6 @@
+@small_business_invoice_tracker_HostAddress = http://localhost:5264
+
+GET {{small_business_invoice_tracker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

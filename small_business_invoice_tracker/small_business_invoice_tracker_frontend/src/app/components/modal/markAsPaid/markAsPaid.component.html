@@ -1,0 +1,13 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div class="container">
+    <div class="row">
+        <div class="align-header">
+            <h3>Are you sure you want to mark invoice as paid?</h3>
+        </div>
+    </div>
+    <div class="input-text">
+        <button mat-flat-button color="warn" class="button-width" (click)="markAsPaid()">Confirm</button>
+        <button mat-flat-button color="primary" class="button-width" (click)="closeModal()">Cancel</button>
+    </div>
+</div>

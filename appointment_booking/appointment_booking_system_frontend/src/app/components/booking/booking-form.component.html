@@ -1,0 +1,33 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div class="booking-container">
+  <h2>Book an Appointment</h2>
+
+  <form [formGroup]="bookingForm" (ngSubmit)="submit()">
+    <label>Branch</label>
+    <select formControlName="branch" (change)="clearMessage()">
+      <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" formControlName="date" (change)="clearMessage()">
+
+    <label>Time Slot</label>
+    <select formControlName="timeSlot" (change)="clearMessage()">
+      <option *ngFor="let slot of timeSlots" [value]="slot.id">{{ slot.label }}</option>
+    </select>
+
+    <label>Name</label>
+    <input type="text" formControlName="name">
+
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    <label>Address</label>
+    <input type="text" formControlName="address">
+
+    <button type="submit" [disabled]="bookingForm.invalid">Book</button>
+  </form>
+
+  <p class="message">{{ message }}</p>
+</div>

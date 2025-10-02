@@ -1,0 +1,21 @@
+<div class="container">
+  <nav class="navbar">
+    <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
+      ☰ Menu
+    </button>
+    <mat-menu #menu="matMenu">
+      @if (currentRoute !== '/summary') {
+      <button mat-menu-item (click)="navigateTo('/summary')">Summary</button>
+      }
+    </mat-menu>
+
+  </nav>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; {{ currentYear }} Small Business Invoice Tracker</span>
+  </footer>
+</div>

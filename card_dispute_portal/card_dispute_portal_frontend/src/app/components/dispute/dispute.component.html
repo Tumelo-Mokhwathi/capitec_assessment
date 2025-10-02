@@ -1,0 +1,43 @@
+<div class="dispute-container">
+    <h2>Submit a Dispute</h2>
+
+    <div *ngIf="transaction">
+        <mat-card class="dispute-card mat-elevation-z2">
+            <div class="transaction-info">
+                <p>
+                    <span class="label"><strong>Merchant:</strong></span>
+                    <span class="value">{{ transaction.merchant }}</span>
+                </p>
+                <p>
+                    <span class="label"><strong>Amount:</strong></span>
+                    <span class="value">{{ transaction.amount | currency:'R':'symbol':'1.2-2' }}</span>
+                </p>
+                <p *ngIf="transaction.description">
+                    <span class="label"><strong>Description:</strong></span>
+                    <span class="value">{{ transaction.description }}</span>
+                </p>
+            </div>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Reason for Dispute</mat-label>
+                <textarea matInput [(ngModel)]="reason" rows="4"></textarea>
+            </mat-form-field>
+
+            <div *ngIf="error" class="mat-error">{{ error }}</div>
+
+            <div class="submit-button">
+                <button mat-stroked-button color="accent" (click)="goBack()" [disabled]="submitting">
+                    Back to Transactions
+                </button>
+                <button mat-raised-button color="primary" (click)="submit()" [disabled]="submitting">
+                    Submit Dispute
+                </button>
+            </div>
+        </mat-card>
+    </div>
+
+    <div *ngIf="!transaction" class="no-transaction">
+        <p>No transaction selected.</p>
+    </div>
+</div>
+

@@ -1,0 +1,59 @@
+.dispute-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.dispute-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transaction-info p {
+  margin: 0.2rem 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.no-transaction {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+}
+
+h2 {
+  text-align: center;
+}
+
+.transaction-info {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+
+  .label {
+    display: inline-block;
+    width: 100px; /* aligns all labels */
+    font-weight: 600;
+    color: #555;
+  }
+
+  .value {
+    color: #111;
+  }
+
+  p {
+    margin: 0.25rem 0;
+  }
+}
+
+
+

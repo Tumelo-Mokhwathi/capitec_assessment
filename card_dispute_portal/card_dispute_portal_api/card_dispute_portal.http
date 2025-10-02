@@ -1,0 +1,6 @@
+@card_dispute_portal_HostAddress = http://localhost:5245
+
+GET {{card_dispute_portal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

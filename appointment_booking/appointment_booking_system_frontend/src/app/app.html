@@ -1,0 +1,25 @@
+<div class="container">
+  <nav class="navbar">
+    <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
+      ☰ Menu
+    </button>
+    <mat-menu #menu="matMenu">
+      @if (currentRoute !== '/bookings') {
+      <button mat-menu-item (click)="navigateTo('/bookings')">Bookings</button>
+      }
+
+      @if (currentRoute !== '/summary') {
+      <button mat-menu-item (click)="navigateTo('/summary')">Summary</button>
+      }
+    </mat-menu>
+
+  </nav>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; {{ currentYear }} Booking System</span>
+  </footer>
+</div>

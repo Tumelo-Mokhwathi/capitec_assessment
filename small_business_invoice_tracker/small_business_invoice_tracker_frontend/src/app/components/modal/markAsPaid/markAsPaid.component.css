@@ -1,0 +1,22 @@
+.container {
+    border-radius: 0px;
+}
+
+.input-text {
+    text-align: center;
+}
+
+.align-header {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.button-width {
+    width: 120px;
+    margin-left: 20px;
+}

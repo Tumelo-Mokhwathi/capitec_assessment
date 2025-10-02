@@ -1,0 +1,109 @@
+<app-loader [loading]="isLoading"></app-loader>
+
+<div class="container">
+    <div class="row">
+        <div class="header-column">
+            <div class="custom-h2">Invoices</div>
+        </div>
+        <div class="button-column">
+            <button mat-flat-button color="primary" (click)="create()">Create</button>
+        </div>
+    </div>
+    <div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Row index -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        {{ i + 1 }}
+                    </td>
+                </ng-container>
+
+                <!-- Customer Name -->
+                <ng-container matColumnDef="customerName">
+                    <th mat-header-cell *matHeaderCellDef> Customer </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.customerName }}
+                    </td>
+                </ng-container>
+
+                <!-- Issue Date -->
+                <ng-container matColumnDef="issueDate">
+                    <th mat-header-cell *matHeaderCellDef> Issue Date </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.issueDate | date }}
+                    </td>
+                </ng-container>
+
+                <!-- Due Date -->
+                <ng-container matColumnDef="dueDate">
+                    <th mat-header-cell *matHeaderCellDef> Due Date </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.dueDate | date }}
+                    </td>
+                </ng-container>
+
+                <!-- Description -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.description }}
+                    </td>
+                </ng-container>
+
+                <!-- Price -->
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.price | currency }}
+                    </td>
+                </ng-container>
+
+                <!-- Total -->
+                <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.total }}
+                    </td>
+                </ng-container>
+
+                <!-- Status -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.status }}
+                    </td>
+                </ng-container>
+
+                <!-- Actions -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary" (click)="update(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="remove(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="markAsPaid(element)" *ngIf="element.status !== 'Paid'">
+                            <mat-icon>payment</mat-icon>
+                        </button>
+                        <button mat-icon-button color="primary" (click)="exportPdf(element)">
+                            <mat-icon>picture_as_pdf</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <!-- Table rows -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+
+    </div>
+</div>
