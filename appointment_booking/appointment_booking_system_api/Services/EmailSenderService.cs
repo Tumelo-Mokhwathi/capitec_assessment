@@ -8,8 +8,8 @@ namespace appointment_booking_system.Services
     {
         private readonly string _smtpHost = "smtp.gmail.com";
         private readonly int _smtpPort = 587;
-        private readonly string _fromEmail = "thabo.mahlangu365@gmail.com";
-        private readonly string _appPassword = "ypus velx ghvp vinf";
+        private readonly string _fromEmail = "GMAIL_ACCOUNT TO SEND EMAIL FROM"; // Replace with your actual Gmail account
+        private readonly string _appPassword = "APP_PASSWORD"; // Replace with your actual app password
 
         public async Task SendBookingConfirmationAsync(string toEmail, string subject, string body)
         {
